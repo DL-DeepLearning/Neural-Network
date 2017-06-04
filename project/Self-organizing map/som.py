@@ -1,6 +1,7 @@
-# your code goes here
+from __future__ import print_function
 import numpy as np
 from math import exp, sqrt
+
 
 class SOM:
 	# init
@@ -17,9 +18,12 @@ class SOM:
 			self.R = float(R)
 		# learning rate
 		if lr == None:
+			self.init_lr = 0.1
 			self.lr = 0.1
 		else:
+			self.init_lr = float(lr)
 			self.lr = float(lr)
+			
 		# Shrinkage
 		if shrink == None:
 			self.shrink = 0.8
@@ -32,17 +36,20 @@ class SOM:
 		input_datas = self.input_datas
 		neurons = self.neurons
 		winner_neuron = 0
+		total_data = input_datas.shape[0] * 1.0
 		# training iterations
 		for i in xrange(iterations):
+			print(str(i + 1) + ' / '+ str(iterations) + ' iterations', end = ' | ')
 			for idx, input_data in enumerate(input_datas):
+				if (idx / total_data * 100) % 10 == 0: print(u"\u2588", end = '')
 				w_n = np.argmin(np.sqrt(((neurons - input_data) ** 2).sum(axis = 1)), axis = 0)
 				winner_neuron = w_n
 				# update weight
 				self.update_weight(winner_neuron, input_data)
 			# update parameter	
 			self.R = self.shrink * self.R
-			self.lr = self.shrink * self.lr
-	
+			self.lr = self.init_lr * exp(float(i) / iterations)
+			print("")	
 	# inference
 	def inference(self, inference_data, value):
 		# setup parameter
@@ -88,5 +95,5 @@ if __name__ == "__main__":
 	graph = np.zeros((height, width), dtype = np.float32)
 	for input_data in input_datas:
 		graph += my_som.inference(input_data, 1)
-	print graph	
+	print (graph)
 

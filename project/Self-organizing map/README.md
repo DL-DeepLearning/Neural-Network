@@ -1,6 +1,6 @@
 # Self organizing map
 
-A self-organizing map (SOM) or self-organizing feature map (SOFM) is a type of artificial neural network (ANN) that is trained using unsupervised learning to produce a low-dimensional (typically two-dimensional).
+A self-organizing map (SOM) is a type of artificial neural network (ANN) that is trained using unsupervised learning to produce a high-dimensional to low-dimensional (typically two-dimensional) feature map.
 
 ### objective
  * Customized output and input

@@ -17,3 +17,4 @@ with open("iris.data.txt") as file:
 
 features = np.array(features, dtype = np.float32)
 
+

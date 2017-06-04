@@ -33,7 +33,7 @@ class SOM:
 		neurons = self.neurons
 		winner_neuron = 0
 		# training iterations
-		for i in range(iterations):
+		for i in xrange(iterations):
 			for idx, input_data in enumerate(input_datas):
 				w_n = np.argmin(np.sqrt(((neurons - input_data) ** 2).sum(axis = 1)), axis = 0)
 				winner_neuron = w_n
@@ -65,12 +65,10 @@ class SOM:
 		neurons = self.neurons
 		X = input_data
 		# convert 1D to 2D coordinate
-		w_row = winner_neuron / width
-		w_col = winner_neuron % width
+		w_row, w_col = winner_neuron / width, winner_neuron % width
 		for n_idx, weight in  enumerate(X - neurons):
 			# convert 1D to 2D coordinate
-			c_row = n_idx / width
-			c_col = n_idx % width
+			c_row, c_col = n_idx / width, n_idx % width
 			# approximate formulate
 			dis = sqrt((c_row - w_row) ** 2 + (c_col - w_col) ** 2)
 			k = exp(-(dis / self.R) ** 2)

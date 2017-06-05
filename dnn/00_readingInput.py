@@ -14,7 +14,8 @@ y_train = y_train.astype('int')
 
 ''' Convert to one-hot encoding '''
 from keras.utils import np_utils
-Y_train = np_utils.to_categorical(y_train,5)
+num_classes = 5
+Y_train = np_utils.to_categorical(y_train, num_classes)
 
 ''' Shuffle training data '''
 from sklearn.utils import shuffle

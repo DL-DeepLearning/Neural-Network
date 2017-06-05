@@ -1,15 +1,14 @@
 import numpy as np
 
 class HNN:
-	def __init__(self, input_data):
-		mat_len = input_data.shape[1]
-		self.X = input_data
+	def __init__(self, train_data):
+		mat_len = train_data.shape[1]
 		self.weights = np.matrix(np.zeros((mat_len, mat_len)))
 		self.threashold = np.matrix(np.zeros((mat_len)))
-		self.train()
+		self.train(train_data)
 		
-	def train(self):
-		X = np.matrix(self.X)
+	def train(self, train_data):
+		X = np.matrix(train_data)
 		mat_len = X.shape[1]
 		W = self.weights
 		
@@ -26,12 +25,12 @@ class HNN:
 		print W
 
 		
-	def inference(self, input_data):
+	def inference(self, test_data):
 		W = self.weights
 		theata = self.threashold
-		prev_Y = np.matrix(input_data).transpose()
+		prev_Y = np.matrix(test_data).transpose()
 		# binary mask
-		vec_len = input_data.shape[0]
+		vec_len = test_data.shape[0]
 		positive = np.matrix(np.zeros((vec_len, 1)) + 1)
 		negative = np.matrix(np.zeros((vec_len, 1)) - 1)
 		# interations

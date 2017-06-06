@@ -35,7 +35,7 @@ class HNN:
 		negative = np.matrix(np.zeros((vec_len, 1)) - 1)
 		# interations
 		while True:
-			R =  W * prev_Y + theata
+			R =  W * prev_Y
 			Y = np.multiply((R > 0), positive) + np.multiply((R == 0) , prev_Y) + np.multiply((R < 0), negative)
 			if not (Y != prev_Y).any():
 				break
@@ -54,6 +54,8 @@ if __name__ == "__main__":
 	Hopfield = HNN(input_data)
 	print np.array([1, 1, 1, -1, 1, -1])
 	print Hopfield.inference(np.array([1, 1, 1, -1, 1, -1]))
+	print Hopfield.inference(np.array([ 1, -1,  1, -1,  1, -1]))
+	print Hopfield.inference(np.array([-1,  1, -1,  1, -1,  1]))
 
 	
 	

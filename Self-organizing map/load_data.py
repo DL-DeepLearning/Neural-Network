@@ -5,7 +5,7 @@ non_repeat_answer = []
 classify = []
 features = []
 ''' load data'''
-with open("iris.data.txt") as file:
+with open("data/iris.data.txt") as file:
 	for line in file.readlines():
 		new_str = re.split('\n', line)[0]
 		if len(new_str) > 0:

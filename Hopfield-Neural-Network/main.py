@@ -3,13 +3,14 @@ import matplotlib.pyplot as plt
 import hnn
 
 execfile("load_data.py")
-train_datas = train_datas[::2]
-test_datas = test_datas
+str_num = 0
+train_datas = train_datas[str_num:str_num+2]
+test_datas = test_datas[str_num: 9 * (str_num + 2)]
 height = height
 width = width
 hopfield = hnn.HNN(train_datas)
 
-for t_d in train_datas:
+for t_d in test_datas:
 	print "test_data"
 	td_reshap = 255 * (t_d.reshape(height, width) == -1)
 	print td_reshap

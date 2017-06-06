@@ -27,9 +27,9 @@ def read_image(filepath, width, height, scale):
 	
 train_datas = []
 test_datas = []
-width = 80
-height = 80
+width = 32
+height = 32
 
-train_datas = read_image("train/", width, height, 2)
-test_datas = read_image("test/", width, height, 2)
+train_datas = read_image("train/", width, height, 1)
+test_datas = read_image("test/", width, height, 1)
 #print train_data.shape

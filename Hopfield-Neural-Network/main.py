@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import hnn
 
 execfile("load_data.py")
-str_num = 0
-train_datas = train_datas[str_num:str_num+2]
-test_datas = test_datas[str_num: 9 * (str_num + 2)]
+start_num = 0
+train_datas = train_datas[start_num: start_num + 2]
+test_datas = test_datas[start_num: 6 * (start_num + 2)]
 height = height
 width = width
 hopfield = hnn.HNN(train_datas)
